@@ -4,10 +4,7 @@ streamlit
 pillow
 requests
 plotly
-<<<<<<< HEAD
 tensorflow
 
 
-=======
-tensorflow==2.13.0
->>>>>>> edeed34b45b4e2d5545e349dff537b94a20cd7df
+
