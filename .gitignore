@@ -1,1 +1,5 @@
 modelo_quantizado16bits.tflite
+dados_csv/test.csv
+dados_csv/train.csv
+dados_csv/sample_submission.csv
+tratamentos_dados.csv
