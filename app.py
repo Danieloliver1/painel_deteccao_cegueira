@@ -12,8 +12,8 @@ import plotly.express as px
 @st.cache_resource(show_spinner="Carregando modelo de IA...")
 def carrega_modelo():
     # Descomente as linhas abaixo se precisar baixar o modelo do Google Drive
-    # url = 'https://drive.google.com/uc?id=1pHKPIVO4IJmIFrlAqpgMAv3kbRzdD_f4'
-    # gdown.download(url,'modelo_quantizado16bits.tflite')
+    url = 'https://drive.google.com/uc?id=1pHKPIVO4IJmIFrlAqpgMAv3kbRzdD_f4'
+    gdown.download(url,'modelo_quantizado16bits.tflite')
     
     # Certifique-se que o modelo está na mesma pasta do script
     try:
@@ -188,7 +188,9 @@ def main():
 
     # --- CARREGAMENTO DOS DADOS ---
     # Coloque seu arquivo CSV em uma pasta chamada 'dados_csv'
-    df_gabarito = carrega_csv('dados_csv/dados_concatenados.csv')
+    #df_gabarito = carrega_csv('dados_csv/dados_concatenados.csv')
+    df_gabarito = carrega_csv('https://raw.githubusercontent.com/Danieloliver1/painel_deteccao_cegueira/refs/heads/main/dados_csv/dados_concatenados.csv')
+    
     interpreter = carrega_modelo()
     
     # --- LAYOUT DA PÁGINA ---
