@@ -12,16 +12,26 @@ import plotly.express as px
 @st.cache_resource(show_spinner="Carregando modelo de IA...")
 def carrega_modelo():
     # Descomente as linhas abaixo se precisar baixar o modelo do Google Drive
-    url = 'https://drive.google.com/uc?id=1pHKPIVO4IJmIFrlAqpgMAv3kbRzdD_f4'
-    gdown.download(url,'modelo_quantizado16bits.tflite')
+    
+    url = 'https://drive.google.com/uc?id=1819W4_0_PfSNVIloaehc_mNnYjRwXu8s' # Novo de 32 bits
+    model_escolhido = 'modelo_quantizado_float32.tflite'
+    gdown.download(url,model_escolhido)
+    
+    #url = 'https://drive.google.com//uc?id=1c8fR3xGwiMqduV2frmQYi-UHrhLjvvJm' # Novo de 16 bits
+    #model_escolhido = 'modelo_quantizado_float16.tflite'
+    #gdown.download(url,model_escolhido)
+    
+    #url = 'https://drive.google.com/uc?id=1pHKPIVO4IJmIFrlAqpgMAv3kbRzdD_f4' # Antigo de 16 bits  
+    #model_escolhido = 'modelo_quantizado16bits.tflite'
+    #gdown.download(url, model_escolhido)
     
     # Certifique-se que o modelo está na mesma pasta do script
     try:
-        interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
+        interpreter = tf.lite.Interpreter(model_path=model_escolhido)
         interpreter.allocate_tensors()
         return interpreter
     except Exception as e:
-        st.error(f"Erro ao carregar o modelo 'modelo_quantizado16bits.tflite'. Verifique se o arquivo está na pasta correta.")
+        st.error(f"Erro ao carregar o modelo {model_escolhido}. Verifique se o arquivo está na pasta correta.")
         st.error(f"Detalhe do erro: {e}")
         return None
 
