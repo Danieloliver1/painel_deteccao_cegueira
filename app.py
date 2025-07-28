@@ -78,7 +78,7 @@ def carrega_imagem_usuario():
         image_resized = image.resize(target_size)
         
         image_array = np.array(image_resized, dtype=np.float32)
-        image_array = image_array / 255.0   # Normalização
+        #image_array = image_array / 255.0   # Normalização
         image_array = np.expand_dims(image_array, axis=0) # Adiciona dimensão do batch
 
         return image_array, id_code
